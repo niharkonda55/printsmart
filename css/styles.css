@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://source.unsplash.com/random/1600x900');
+    /* Replace with the desired image URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+.container {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Add a semi-transparent background */
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+h1 {
+    color: #ffcc00;
+    /* Gold color for the main heading */
+    margin-bottom: 20px;
+}
+
+h2,
+h3 {
+    color: #ffcc00;
+    /* Gold color for subheadings */
+}
+
+p {
+    color: #e0e0e0;
+    /* Light gray for paragraphs */
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+nav .container-fluid ul:first-child {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nav .container-fluid ul:first-child li {
+    font-size: 24px;
+    /* Adjust the font size as needed */
+    text-align: center;
+}

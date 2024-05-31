@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - PrintSmart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://png.pngtree.com/thumb_back/fh260/back_pic/03/80/06/3757c30a762387b.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #495057;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .illustration {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .login-form {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .login-form h1 {
+            color: #6f42c1;
+            /* Purple color for the main heading */
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .login-form p {
+            color: #6c757d;
+            /* Gray color for the text */
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .btn-login {
+            padding: 10px 20px;
+            background-color: #6f42c1;
+            /* Purple color for the button */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #5a33a8;
+        }
+
+        .form-check-label,
+        .forgot-password {
+            color: #6c757d;
+        }
+
+        .forgot-password {
+            float: right;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="illustration">
+            <img src="https://ncetir.com/Images/login@4x.png" alt="Illustration">
+        </div>
+        <div class="login-form">
+            <h1>Admin Log In</h1>
+            <!--p>Log in with your data that you entered during your registration</p-->
+            <form action="php/admin_login.php" method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="keep-logged-in">
+                    <label class="form-check-label" for="keep-logged-in">Keep me logged in</label>
+                    <!--a href="#" class="forgot-password">Forgot Password?</a-->
+                </div>
+                <button type="submit" class="btn btn-login btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
