@@ -41,36 +41,31 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch('php/admin_dashboard.php')
             .then(response => response.json())
             .then(data => {
-                let documentsList = document.getElementById('all-documents-list');
-                documentsList.innerHTML = ''; // Clear existing content
+                let tbody = document.getElementById('documents-tbody');
+                tbody.innerHTML = ''; // Clear existing content
 
                 data.forEach(doc => {
-                    let listItem = document.createElement('div');
+                    let row = document.createElement('tr');
 
-                    // Highlight document based on status
-                    listItem.classList.add(doc.status === 'Received' ? 'received' : 'pending');
+                    // Highlight row based on status
+                    row.classList.add(doc.status === 'Received' ? 'received' : 'pending');
 
-                    listItem.innerHTML = `
-              Username: ${doc.username}, 
-              Filename: ${doc.filename}, 
-              Uploaded on: ${doc.upload_time}, 
-              Status: ${doc.status}`;
+                    row.innerHTML = `
+                        <td>${doc.username}</td>
+                        <td>${doc.filename}</td>
+                        <td>${doc.upload_time}</td>
+                        <td>
+                            <select onchange="updateStatus(${doc.id}, this.value)">
+                                <option value="Pending" ${doc.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                <option value="Received" ${doc.status === 'Received' ? 'selected' : ''}>Received</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a href="http://localhost/printsmart/uploads/${doc.file_path}" download="${doc.filename}">Download</a>
+                        </td>
+                    `;
 
-                    // Download link for all documents
-                    let downloadLink = document.createElement('a');
-                    downloadLink.href = `http://localhost/printsmart/uploads/${doc.file_path}`; // Adjusted path
-                    downloadLink.download = doc.filename;
-                    downloadLink.textContent = 'Download';
-                    listItem.appendChild(downloadLink);
-
-                    // Existing Status update select (unchanged)
-                    listItem.innerHTML += `
-              <select onchange="updateStatus(${doc.id}, this.value)">
-                <option value="Pending" ${doc.status === 'Pending' ? 'selected' : ''}>Pending</option>
-                <option value="Received" ${doc.status === 'Received' ? 'selected' : ''}>Received</option>
-              </select>`;
-
-                    documentsList.appendChild(listItem);
+                    tbody.appendChild(row);
                 });
             });
     }
