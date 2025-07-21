@@ -34,6 +34,8 @@ function updateStatus(documentId, status) {
             fetchDocuments();
         });
 }*/
+
+//updated Code for Dashboard
 document.addEventListener("DOMContentLoaded", function () {
     fetchDocuments();
 
