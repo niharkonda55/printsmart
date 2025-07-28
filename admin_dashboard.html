@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location: ../admin_login.html");
@@ -142,9 +142,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody id="documents-tbody">
-                        <!-- Dynamic rows will be populated here by admin_dashboard.js -->
-                    </tbody>
+                    <tbody id="documents-tbody"> -->
+<!-- Dynamic rows will be populated here by admin_dashboard.js -->
+<!-- </tbody>
                 </table>
             </div>
         </section>
@@ -154,6 +154,167 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/admin_dashboard.js"></script>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PrintSmart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            transition: background-color 0.3s;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem;
+        }
+
+        .status-badge {
+            padding: 0.35em 0.75em;
+            font-size: 0.8rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: #ffeeba;
+            color: #856404;
+        }
+
+        .status-received {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .btn-download {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: #218838;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #f8f9fa;
+        }
+
+        .dark-mode .card {
+            background-color: #1e1e1e;
+            color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <a class="btn btn-primary" href="index.html">Home</a>
+            <button class="btn btn-outline-light ms-auto" id="toggleModeBtn">Dark Mode</button>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="card p-4">
+            <h4 class="mb-4">Uploaded Documents</h4>
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Username</th>
+                            <th>Filename</th>
+                            <th>Uploaded On</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="documents-tbody">
+                        <!-- Data filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchDocuments();
+
+            function fetchDocuments() {
+                fetch('php/admin_dashboard.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        const tbody = document.getElementById('documents-tbody');
+                        tbody.innerHTML = '';
+
+                        data.forEach(doc => {
+                            const tr = document.createElement('tr');
+                            const statusClass = doc.status === 'Received' ? 'status-received' : 'status-pending';
+
+                            tr.innerHTML = `
+                <td>${doc.username}</td>
+                <td>${doc.filename}</td>
+                <td>${doc.upload_time}</td>
+                <td>
+                  <span class="status-badge ${statusClass}">${doc.status}</span><br>
+                  <select class="form-select form-select-sm mt-1" onchange="updateStatus(${doc.id}, this.value)">
+                    <option value="Pending" ${doc.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                    <option value="Received" ${doc.status === 'Received' ? 'selected' : ''}>Received</option>
+                  </select>
+                </td>
+                <td>
+                  <a href="http://localhost/printsmart/uploads/${doc.file_path}" class="btn btn-download" download>
+                    <i class="fas fa-download"></i> Download
+                  </a>
+                </td>
+              `;
+                            tbody.appendChild(tr);
+                        });
+                    });
+            }
+
+            window.updateStatus = function (id, status) {
+                fetch('php/update_status.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `document_id=${id}&status=${status}`
+                })
+                    .then(response => response.text())
+                    .then(() => fetchDocuments());
+            };
+
+            const toggleBtn = document.getElementById('toggleModeBtn');
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+            });
+        });
+    </script>
 </body>
 
 </html>

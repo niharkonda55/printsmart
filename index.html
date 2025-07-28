@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrintSmart</title>
-    <!-- Pico CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <title>PrintSmart</title> -->
+<!-- Pico CSS -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet"> -->
+<!-- Custom CSS -->
+<!-- <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -29,19 +29,19 @@
                     <h2>Welcome to PrintSmart</h2>
                     <h3>Your smart printing solution</h3>
                 </hgroup>
-                <p>Experience seamless printing with PrintSmart. Log in or register to get started.</p>
-                <!--figure>
+                <p>Experience seamless printing with PrintSmart. Log in or register to get started.</p> -->
+<!--figure>
                     <img src="https://source.unsplash.com/featured/?printer,office" alt="Printing Image" />
                     <figcaption><a href="https://unsplash.com" target="_blank">Image Source</a></figcaption>
                 </figure-->
-                <h3>Join Us</h3>
+<!-- <h3>Join Us</h3>
                 <p>Create an account to manage your printing needs efficiently.</p>
                 <h3>Admin Access</h3>
                 <p>Admin can manage the system with their credentials.</p>
             </section>
         </div>
-    </main>
-    <!--section aria-label="Subscribe example">
+    </main> -->
+<!--section aria-label="Subscribe example">
         <div class="container">
             <article>
                 <hgroup>
@@ -57,15 +57,150 @@
             </article>
         </div>
     </section-->
-    <footer class="container">
-        <small><a href="privacy.html">Privacy Policy</a>
-             <!-- • <a href="terms.html">Terms of Service</a></small> -->
-    </footer>
+<!-- <footer class="container">
+        <small><a href="privacy.html">Privacy Policy</a> -->
+<!-- • <a href="terms.html">Terms of Service</a></small> -->
+<!-- </footer> -->
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Bootstrap JS and dependencies -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrintSmart - Smart Printing Solution</title>
+    <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #6f42c1;
+            --secondary: #f3f0ff;
+        }
+
+        body {
+            background-color: var(--secondary);
+            transition: background-color 0.4s ease;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            transition: background 0.3s ease-in-out;
+        }
+
+        nav.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+            margin-left: 1rem;
+            transition: opacity 0.2s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        main {
+            padding: 4rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: var(--primary);
+        }
+
+        .btn-group {
+            margin-top: 2rem;
+        }
+
+        .btn-group a {
+            margin: 0.5rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-group a:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #f5f5f5;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <strong>PrintSmart</strong>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+                <a href="admin_login.html">Admin</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Welcome to PrintSmart</h2>
+            <p>Your smart and simple printing solution.</p>
+            <p>Upload your documents, track your print status, and manage everything online—fast and easy.</p>
+            <!-- <div class="btn-group">
+                <a href="login.html" class="contrast">User Login</a>
+                <a href="register.html" class="secondary">Register</a>
+                <a href="admin_login.html" class="secondary">Admin Login</a>
+            </div> -->
+        </div>
+    </main>
+
+    <footer>
+        <small>&copy; 2025 PrintSmart • <a href="privacy.html">Privacy Policy</a></small>
+    </footer>
+
 </body>
 
 </html>
